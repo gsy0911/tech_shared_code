@@ -40,14 +40,6 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
-name = "atomicwrites"
-version = "1.4.0"
-description = "Atomic file writes."
-category = "dev"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-
-[[package]]
 name = "attrs"
 version = "20.3.0"
 description = "Classes Without Boilerplate"
@@ -60,6 +52,14 @@ dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", 
 docs = ["furo", "sphinx", "zope.interface"]
 tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six"]
+
+[[package]]
+name = "azure-common"
+version = "1.1.26"
+description = "Microsoft Azure Client Library for Python (Common)"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "azure-core"
@@ -98,6 +98,59 @@ cryptography = ">=2.1.4"
 msal = ">=1.6.0,<2.0.0"
 msal-extensions = ">=0.3.0,<0.4.0"
 six = ">=1.6"
+
+[[package]]
+name = "azure-keyvault"
+version = "4.1.0"
+description = "Microsoft Azure Key Vault Client Libraries for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+azure-keyvault-certificates = ">=4.1,<5.0"
+azure-keyvault-keys = ">=4.1,<5.0"
+azure-keyvault-secrets = ">=4.1,<5.0"
+
+[[package]]
+name = "azure-keyvault-certificates"
+version = "4.2.1"
+description = "Microsoft Azure Key Vault Certificates Client Library for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+azure-common = ">=1.1,<2.0"
+azure-core = ">=1.7.0,<2.0.0"
+msrest = ">=0.6.0"
+
+[[package]]
+name = "azure-keyvault-keys"
+version = "4.3.1"
+description = "Microsoft Azure Key Vault Keys Client Library for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+azure-common = ">=1.1,<2.0"
+azure-core = ">=1.7.0,<2.0.0"
+cryptography = ">=2.1.4"
+msrest = ">=0.6.0"
+
+[[package]]
+name = "azure-keyvault-secrets"
+version = "4.2.0"
+description = "Microsoft Azure Key Vault Secrets Client Library for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+azure-common = ">=1.1,<2.0"
+azure-core = ">=1.7.0,<2.0.0"
+msrest = ">=0.6.0"
 
 [[package]]
 name = "babel"
@@ -165,17 +218,6 @@ description = "Cross-platform colored terminal text."
 category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-
-[[package]]
-name = "coverage"
-version = "5.3"
-description = "Code coverage measurement for Python"
-category = "dev"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
-
-[package.extras]
-toml = ["toml"]
 
 [[package]]
 name = "cryptography"
@@ -315,6 +357,17 @@ description = "Vestigial utilities from IPython"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "isodate"
+version = "0.6.0"
+description = "An ISO 8601 date/time/duration parser and formatter"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
 
 [[package]]
 name = "jedi"
@@ -468,14 +521,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "more-itertools"
-version = "8.6.0"
-description = "More routines for operating on iterables, beyond itertools"
-category = "dev"
-optional = false
-python-versions = ">=3.5"
-
-[[package]]
 name = "msal"
 version = "1.6.0"
 description = "The Microsoft Authentication Library (MSAL) for Python library enables your app to access the Microsoft Cloud by supporting authentication of users with Microsoft Azure Active Directory accounts (AAD) and Microsoft Accounts (MSA) using industry standard OAuth2 and OpenID Connect."
@@ -502,6 +547,23 @@ portalocker = [
     {version = ">=1.0,<2.0", markers = "platform_system != \"Windows\""},
     {version = ">=1.6,<2.0", markers = "platform_system == \"Windows\""},
 ]
+
+[[package]]
+name = "msrest"
+version = "0.6.19"
+description = "AutoRest swagger generator Python client runtime."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+isodate = ">=0.6.0"
+requests = ">=2.16,<3.0"
+requests-oauthlib = ">=0.5.0"
+
+[package.extras]
+async = ["aiohttp (>=3.0)", "aiodns"]
 
 [[package]]
 name = "nbclient"
@@ -608,6 +670,19 @@ docs = ["sphinx", "nbsphinx", "sphinxcontrib-github-alt"]
 test = ["nose", "coverage", "requests", "nose-warnings-filters", "nbval", "nose-exclude", "selenium", "pytest", "pytest-cov", "requests-unixsocket"]
 
 [[package]]
+name = "oauthlib"
+version = "3.1.0"
+description = "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[package.extras]
+rsa = ["cryptography"]
+signals = ["blinker"]
+signedtoken = ["cryptography", "pyjwt (>=1.0.0)"]
+
+[[package]]
 name = "packaging"
 version = "20.7"
 description = "Core utilities for Python packages"
@@ -655,20 +730,6 @@ description = "Tiny 'shelve'-like database with concurrency support"
 category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "pluggy"
-version = "0.13.1"
-description = "plugin and hook calling mechanisms for python"
-category = "dev"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-
-[package.dependencies]
-importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
-
-[package.extras]
-dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "portalocker"
@@ -772,58 +833,6 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
-name = "pytest"
-version = "5.4.3"
-description = "pytest: simple powerful testing with Python"
-category = "dev"
-optional = false
-python-versions = ">=3.5"
-
-[package.dependencies]
-atomicwrites = {version = ">=1.0", markers = "sys_platform == \"win32\""}
-attrs = ">=17.4.0"
-colorama = {version = "*", markers = "sys_platform == \"win32\""}
-importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
-more-itertools = ">=4.0.0"
-packaging = "*"
-pluggy = ">=0.12,<1.0"
-py = ">=1.5.0"
-wcwidth = "*"
-
-[package.extras]
-checkqa-mypy = ["mypy (==v0.761)"]
-testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
-
-[[package]]
-name = "pytest-cov"
-version = "2.10.1"
-description = "Pytest plugin for measuring coverage."
-category = "dev"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-
-[package.dependencies]
-coverage = ">=4.4"
-pytest = ">=4.6"
-
-[package.extras]
-testing = ["fields", "hunter", "process-tests (==2.0.2)", "six", "pytest-xdist", "virtualenv"]
-
-[[package]]
-name = "pytest-mock"
-version = "3.3.1"
-description = "Thin-wrapper around the mock package for easier use with pytest"
-category = "dev"
-optional = false
-python-versions = ">=3.5"
-
-[package.dependencies]
-pytest = ">=5.0"
-
-[package.extras]
-dev = ["pre-commit", "tox", "pytest-asyncio"]
-
-[[package]]
 name = "python-dateutil"
 version = "2.8.1"
 description = "Extensions to the standard Python datetime module"
@@ -846,7 +855,7 @@ python-versions = "*"
 name = "pywin32"
 version = "300"
 description = "Python for Window Extensions"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -887,6 +896,21 @@ urllib3 = ">=1.21.1,<1.27"
 [package.extras]
 security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)"]
 socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
+
+[[package]]
+name = "requests-oauthlib"
+version = "1.3.0"
+description = "OAuthlib authentication support for Requests."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[package.dependencies]
+oauthlib = ">=3.0.0"
+requests = ">=2.0.0"
+
+[package.extras]
+rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
 
 [[package]]
 name = "send2trash"
@@ -1104,7 +1128,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "8b104640e2cc9402bbf2c360f742966ed82ba1a272625ee44f142e6b127dcce2"
+content-hash = "648aa502d880b98cc4688061e24e3174be7716c109e889a86feabed048d5bbe5"
 
 [metadata.files]
 alabaster = [
@@ -1137,13 +1161,13 @@ async-generator = [
     {file = "async_generator-1.10-py3-none-any.whl", hash = "sha256:01c7bf666359b4967d2cda0000cc2e4af16a0ae098cbffcb8472fb9e8ad6585b"},
     {file = "async_generator-1.10.tar.gz", hash = "sha256:6ebb3d106c12920aaae42ccb6f787ef5eefdcdd166ea3d628fa8476abe712144"},
 ]
-atomicwrites = [
-    {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
-    {file = "atomicwrites-1.4.0.tar.gz", hash = "sha256:ae70396ad1a434f9c7046fd2dd196fc04b12f9e91ffb859164193be8b6168a7a"},
-]
 attrs = [
     {file = "attrs-20.3.0-py2.py3-none-any.whl", hash = "sha256:31b2eced602aa8423c2aea9c76a724617ed67cf9513173fd3a4f03e3a929c7e6"},
     {file = "attrs-20.3.0.tar.gz", hash = "sha256:832aa3cde19744e49938b91fea06d69ecb9e649c93ba974535d08ad92164f700"},
+]
+azure-common = [
+    {file = "azure-common-1.1.26.zip", hash = "sha256:b2866238aea5d7492cfb0282fc8b8d5f6d06fb433872345864d45753c10b6e4f"},
+    {file = "azure_common-1.1.26-py2.py3-none-any.whl", hash = "sha256:acd26b2adb3ea192d766b4f083805287da080adc7f316ce7e52ef0ea917fbe31"},
 ]
 azure-core = [
     {file = "azure-core-1.9.0.zip", hash = "sha256:ef8ae93a2ce8b595f231395579be11aadc1838168cbc2582e2d0bbd8b15c461f"},
@@ -1156,6 +1180,22 @@ azure-functions = [
 azure-identity = [
     {file = "azure-identity-1.5.0.zip", hash = "sha256:872adfa760b2efdd62595659b283deba92d47b7a67557eb9ff48f0b5d04ee396"},
     {file = "azure_identity-1.5.0-py2.py3-none-any.whl", hash = "sha256:1575972d19fe6651256554b2be4c009d2c996d0e86fb8ab4b0a10cc1ee2ef80a"},
+]
+azure-keyvault = [
+    {file = "azure-keyvault-4.1.0.zip", hash = "sha256:69002a546921a8290eb54d9a3805cfc515c321bc1d4c0bfcfb463620245eca40"},
+    {file = "azure_keyvault-4.1.0-py2.py3-none-any.whl", hash = "sha256:5fa0438f7f6e2e79543f2724957acf77c3c187e558f4d030a4f9b7493b9f946d"},
+]
+azure-keyvault-certificates = [
+    {file = "azure-keyvault-certificates-4.2.1.zip", hash = "sha256:ea651883ad00d0a9a25b38e51feff7111f6c7099c6fb2597598da5bb21d3451c"},
+    {file = "azure_keyvault_certificates-4.2.1-py2.py3-none-any.whl", hash = "sha256:9959a1e49cac4dfaa8e7e36c86fe7d7c4159a3b76a29788d042d41ec41200a8b"},
+]
+azure-keyvault-keys = [
+    {file = "azure-keyvault-keys-4.3.1.zip", hash = "sha256:fbf67bca913ebf68b9075ee9d2e2b899dc3c7892cc40abfe1b08220a382f6ed9"},
+    {file = "azure_keyvault_keys-4.3.1-py2.py3-none-any.whl", hash = "sha256:25cf889bbcafd8dee0e068fd48d84e24e11143bf85e35c68d997a222e4a0f7fb"},
+]
+azure-keyvault-secrets = [
+    {file = "azure-keyvault-secrets-4.2.0.zip", hash = "sha256:1083ab900da5ec63c518ffef49d9fdca02c81ddffdf80c52c03cd9da479e021f"},
+    {file = "azure_keyvault_secrets-4.2.0-py2.py3-none-any.whl", hash = "sha256:08b8aa518590c394477514f4a0a5d9e557a00ff164de9f6f6e7b112f8d5e6aa1"},
 ]
 babel = [
     {file = "Babel-2.9.0-py2.py3-none-any.whl", hash = "sha256:9d35c22fcc79893c3ecc85ac4a56cde1ecf3f19c540bba0922308a6c06ca6fa5"},
@@ -1217,42 +1257,6 @@ chardet = [
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
-]
-coverage = [
-    {file = "coverage-5.3-cp27-cp27m-macosx_10_13_intel.whl", hash = "sha256:bd3166bb3b111e76a4f8e2980fa1addf2920a4ca9b2b8ca36a3bc3dedc618270"},
-    {file = "coverage-5.3-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:9342dd70a1e151684727c9c91ea003b2fb33523bf19385d4554f7897ca0141d4"},
-    {file = "coverage-5.3-cp27-cp27m-manylinux1_i686.whl", hash = "sha256:63808c30b41f3bbf65e29f7280bf793c79f54fb807057de7e5238ffc7cc4d7b9"},
-    {file = "coverage-5.3-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:4d6a42744139a7fa5b46a264874a781e8694bb32f1d76d8137b68138686f1729"},
-    {file = "coverage-5.3-cp27-cp27m-win32.whl", hash = "sha256:86e9f8cd4b0cdd57b4ae71a9c186717daa4c5a99f3238a8723f416256e0b064d"},
-    {file = "coverage-5.3-cp27-cp27m-win_amd64.whl", hash = "sha256:7858847f2d84bf6e64c7f66498e851c54de8ea06a6f96a32a1d192d846734418"},
-    {file = "coverage-5.3-cp27-cp27mu-manylinux1_i686.whl", hash = "sha256:530cc8aaf11cc2ac7430f3614b04645662ef20c348dce4167c22d99bec3480e9"},
-    {file = "coverage-5.3-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:381ead10b9b9af5f64646cd27107fb27b614ee7040bb1226f9c07ba96625cbb5"},
-    {file = "coverage-5.3-cp35-cp35m-macosx_10_13_x86_64.whl", hash = "sha256:71b69bd716698fa62cd97137d6f2fdf49f534decb23a2c6fc80813e8b7be6822"},
-    {file = "coverage-5.3-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:1d44bb3a652fed01f1f2c10d5477956116e9b391320c94d36c6bf13b088a1097"},
-    {file = "coverage-5.3-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:1c6703094c81fa55b816f5ae542c6ffc625fec769f22b053adb42ad712d086c9"},
-    {file = "coverage-5.3-cp35-cp35m-win32.whl", hash = "sha256:cedb2f9e1f990918ea061f28a0f0077a07702e3819602d3507e2ff98c8d20636"},
-    {file = "coverage-5.3-cp35-cp35m-win_amd64.whl", hash = "sha256:7f43286f13d91a34fadf61ae252a51a130223c52bfefb50310d5b2deb062cf0f"},
-    {file = "coverage-5.3-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:c851b35fc078389bc16b915a0a7c1d5923e12e2c5aeec58c52f4aa8085ac8237"},
-    {file = "coverage-5.3-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:aac1ba0a253e17889550ddb1b60a2063f7474155465577caa2a3b131224cfd54"},
-    {file = "coverage-5.3-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:2b31f46bf7b31e6aa690d4c7a3d51bb262438c6dcb0d528adde446531d0d3bb7"},
-    {file = "coverage-5.3-cp36-cp36m-win32.whl", hash = "sha256:c5f17ad25d2c1286436761b462e22b5020d83316f8e8fcb5deb2b3151f8f1d3a"},
-    {file = "coverage-5.3-cp36-cp36m-win_amd64.whl", hash = "sha256:aef72eae10b5e3116bac6957de1df4d75909fc76d1499a53fb6387434b6bcd8d"},
-    {file = "coverage-5.3-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:e8caf961e1b1a945db76f1b5fa9c91498d15f545ac0ababbe575cfab185d3bd8"},
-    {file = "coverage-5.3-cp37-cp37m-manylinux1_i686.whl", hash = "sha256:29a6272fec10623fcbe158fdf9abc7a5fa032048ac1d8631f14b50fbfc10d17f"},
-    {file = "coverage-5.3-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:2d43af2be93ffbad25dd959899b5b809618a496926146ce98ee0b23683f8c51c"},
-    {file = "coverage-5.3-cp37-cp37m-win32.whl", hash = "sha256:c3888a051226e676e383de03bf49eb633cd39fc829516e5334e69b8d81aae751"},
-    {file = "coverage-5.3-cp37-cp37m-win_amd64.whl", hash = "sha256:9669179786254a2e7e57f0ecf224e978471491d660aaca833f845b72a2df3709"},
-    {file = "coverage-5.3-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:0203acd33d2298e19b57451ebb0bed0ab0c602e5cf5a818591b4918b1f97d516"},
-    {file = "coverage-5.3-cp38-cp38-manylinux1_i686.whl", hash = "sha256:582ddfbe712025448206a5bc45855d16c2e491c2dd102ee9a2841418ac1c629f"},
-    {file = "coverage-5.3-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:0f313707cdecd5cd3e217fc68c78a960b616604b559e9ea60cc16795c4304259"},
-    {file = "coverage-5.3-cp38-cp38-win32.whl", hash = "sha256:78e93cc3571fd928a39c0b26767c986188a4118edc67bc0695bc7a284da22e82"},
-    {file = "coverage-5.3-cp38-cp38-win_amd64.whl", hash = "sha256:8f264ba2701b8c9f815b272ad568d555ef98dfe1576802ab3149c3629a9f2221"},
-    {file = "coverage-5.3-cp39-cp39-macosx_10_13_x86_64.whl", hash = "sha256:50691e744714856f03a86df3e2bff847c2acede4c191f9a1da38f088df342978"},
-    {file = "coverage-5.3-cp39-cp39-manylinux1_i686.whl", hash = "sha256:9361de40701666b034c59ad9e317bae95c973b9ff92513dd0eced11c6adf2e21"},
-    {file = "coverage-5.3-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:c1b78fb9700fc961f53386ad2fd86d87091e06ede5d118b8a50dea285a071c24"},
-    {file = "coverage-5.3-cp39-cp39-win32.whl", hash = "sha256:cb7df71de0af56000115eafd000b867d1261f786b5eebd88a0ca6360cccfaca7"},
-    {file = "coverage-5.3-cp39-cp39-win_amd64.whl", hash = "sha256:47a11bdbd8ada9b7ee628596f9d97fbd3851bd9999d398e9436bd67376dbece7"},
-    {file = "coverage-5.3.tar.gz", hash = "sha256:280baa8ec489c4f542f8940f9c4c2181f0306a8ee1a54eceba071a449fb870a0"},
 ]
 cryptography = [
     {file = "cryptography-3.2.1-cp27-cp27m-macosx_10_10_x86_64.whl", hash = "sha256:6dc59630ecce8c1f558277ceb212c751d6730bd12c80ea96b4ac65637c4f55e7"},
@@ -1317,6 +1321,10 @@ ipython = [
 ipython-genutils = [
     {file = "ipython_genutils-0.2.0-py2.py3-none-any.whl", hash = "sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8"},
     {file = "ipython_genutils-0.2.0.tar.gz", hash = "sha256:eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"},
+]
+isodate = [
+    {file = "isodate-0.6.0-py2.py3-none-any.whl", hash = "sha256:aa4d33c06640f5352aca96e4b81afd8ab3b47337cc12089822d6f322ac772c81"},
+    {file = "isodate-0.6.0.tar.gz", hash = "sha256:2e364a3d5759479cdb2d37cce6b9376ea504db2ff90252a2e5b7cc89cc9ff2d8"},
 ]
 jedi = [
     {file = "jedi-0.17.2-py2.py3-none-any.whl", hash = "sha256:98cc583fa0f2f8304968199b01b6b4b94f469a1f4a74c1560506ca2a211378b5"},
@@ -1393,10 +1401,6 @@ mistune = [
     {file = "mistune-0.8.4-py2.py3-none-any.whl", hash = "sha256:88a1051873018da288eee8538d476dffe1262495144b33ecb586c4ab266bb8d4"},
     {file = "mistune-0.8.4.tar.gz", hash = "sha256:59a3429db53c50b5c6bcc8a07f8848cb00d7dc8bdb431a4ab41920d201d4756e"},
 ]
-more-itertools = [
-    {file = "more-itertools-8.6.0.tar.gz", hash = "sha256:b3a9005928e5bed54076e6e549c792b306fddfe72b2d1d22dd63d42d5d3899cf"},
-    {file = "more_itertools-8.6.0-py3-none-any.whl", hash = "sha256:8e1a2a43b2f2727425f2b5839587ae37093f19153dc26c0927d1048ff6557330"},
-]
 msal = [
     {file = "msal-1.6.0-py2.py3-none-any.whl", hash = "sha256:b9d838a24aa06a5d2edbaaf55607423038baa40564c4f72aa93acfc5f2077a0c"},
     {file = "msal-1.6.0.tar.gz", hash = "sha256:c995de0710c31a918bd908cb750153b4d091fd6893e9ab73c685a53f950bbd96"},
@@ -1404,6 +1408,10 @@ msal = [
 msal-extensions = [
     {file = "msal-extensions-0.3.0.tar.gz", hash = "sha256:5523dfa15da88297e90d2e73486c8ef875a17f61ea7b7e2953a300432c2e7861"},
     {file = "msal_extensions-0.3.0-py2.py3-none-any.whl", hash = "sha256:a530c2d620061822f2ced8e29da301bc928b146970df635c852907423e8ddddc"},
+]
+msrest = [
+    {file = "msrest-0.6.19-py2.py3-none-any.whl", hash = "sha256:87aa64948c3ef3dbf6f6956d2240493e68d714e4621b92b65b3c4d5808297929"},
+    {file = "msrest-0.6.19.tar.gz", hash = "sha256:55f8c3940bc5dc609f8cf9fcd639444716cc212a943606756272e0d0017bbb5b"},
 ]
 nbclient = [
     {file = "nbclient-0.5.1-py3-none-any.whl", hash = "sha256:4d6b116187c795c99b9dba13d46e764d596574b14c296d60670c8dfe454db364"},
@@ -1425,6 +1433,10 @@ notebook = [
     {file = "notebook-6.1.5-py3-none-any.whl", hash = "sha256:508cf9dad7cdb3188f1aa27017dc78179029dfe83814fc505329f689bc2ab50f"},
     {file = "notebook-6.1.5.tar.gz", hash = "sha256:3db37ae834c5f3b6378381229d0e5dfcbfb558d08c8ce646b1ad355147f5e91d"},
 ]
+oauthlib = [
+    {file = "oauthlib-3.1.0-py2.py3-none-any.whl", hash = "sha256:df884cd6cbe20e32633f1db1072e9356f53638e4361bef4e8b03c9127c9328ea"},
+    {file = "oauthlib-3.1.0.tar.gz", hash = "sha256:bee41cc35fcca6e988463cacc3bcb8a96224f470ca547e697b604cc697b2f889"},
+]
 packaging = [
     {file = "packaging-20.7-py2.py3-none-any.whl", hash = "sha256:eb41423378682dadb7166144a4926e443093863024de508ca5c9737d6bc08376"},
     {file = "packaging-20.7.tar.gz", hash = "sha256:05af3bb85d320377db281cf254ab050e1a7ebcbf5410685a9a407e18a1f81236"},
@@ -1443,10 +1455,6 @@ pexpect = [
 pickleshare = [
     {file = "pickleshare-0.7.5-py2.py3-none-any.whl", hash = "sha256:9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56"},
     {file = "pickleshare-0.7.5.tar.gz", hash = "sha256:87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca"},
-]
-pluggy = [
-    {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
-    {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 portalocker = [
     {file = "portalocker-1.7.1-py2.py3-none-any.whl", hash = "sha256:34cb36c618d88bcd9079beb36dcdc1848a3e3d92ac4eac59055bdeafc39f9d4a"},
@@ -1486,18 +1494,6 @@ pyparsing = [
 ]
 pyrsistent = [
     {file = "pyrsistent-0.17.3.tar.gz", hash = "sha256:2e636185d9eb976a18a8a8e96efce62f2905fea90041958d8cc2a189756ebf3e"},
-]
-pytest = [
-    {file = "pytest-5.4.3-py3-none-any.whl", hash = "sha256:5c0db86b698e8f170ba4582a492248919255fcd4c79b1ee64ace34301fb589a1"},
-    {file = "pytest-5.4.3.tar.gz", hash = "sha256:7979331bfcba207414f5e1263b5a0f8f521d0f457318836a7355531ed1a4c7d8"},
-]
-pytest-cov = [
-    {file = "pytest-cov-2.10.1.tar.gz", hash = "sha256:47bd0ce14056fdd79f93e1713f88fad7bdcc583dcd7783da86ef2f085a0bb88e"},
-    {file = "pytest_cov-2.10.1-py2.py3-none-any.whl", hash = "sha256:45ec2d5182f89a81fc3eb29e3d1ed3113b9e9a873bcddb2a71faaab066110191"},
-]
-pytest-mock = [
-    {file = "pytest-mock-3.3.1.tar.gz", hash = "sha256:a4d6d37329e4a893e77d9ffa89e838dd2b45d5dc099984cf03c703ac8411bb82"},
-    {file = "pytest_mock-3.3.1-py3-none-any.whl", hash = "sha256:024e405ad382646318c4281948aadf6fe1135632bea9cc67366ea0c4098ef5f2"},
 ]
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
@@ -1565,6 +1561,11 @@ pyzmq = [
 requests = [
     {file = "requests-2.25.0-py2.py3-none-any.whl", hash = "sha256:e786fa28d8c9154e6a4de5d46a1d921b8749f8b74e28bde23768e5e16eece998"},
     {file = "requests-2.25.0.tar.gz", hash = "sha256:7f1a0b932f4a60a1a65caa4263921bb7d9ee911957e0ae4a23a6dd08185ad5f8"},
+]
+requests-oauthlib = [
+    {file = "requests-oauthlib-1.3.0.tar.gz", hash = "sha256:b4261601a71fd721a8bd6d7aa1cc1d6a8a93b4a9f5e96626f8e4d91e8beeaa6a"},
+    {file = "requests_oauthlib-1.3.0-py2.py3-none-any.whl", hash = "sha256:7f71572defaecd16372f9006f33c2ec8c077c3cfa6f5911a9a90202beb513f3d"},
+    {file = "requests_oauthlib-1.3.0-py3.7.egg", hash = "sha256:fa6c47b933f01060936d87ae9327fead68768b69c6c9ea2109c48be30f2d4dbc"},
 ]
 send2trash = [
     {file = "Send2Trash-1.5.0-py3-none-any.whl", hash = "sha256:f1691922577b6fa12821234aeb57599d887c4900b9ca537948d2dac34aea888b"},
