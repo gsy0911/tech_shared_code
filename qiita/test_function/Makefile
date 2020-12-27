@@ -1,5 +1,5 @@
 # function app name to deploy
-FUNCTION_APP_NAME := YourFunctionNameHere
+FUNCTION_APP_NAME := gsy0911-function
 # resource group or keyvault name
 RESOURCE_GROUP := your-rg
 KEYVAULT_NAME := your-kv
