@@ -32,13 +32,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     """
     # POSTのみを対象としているため
     payload = req.get_json()
+    logger.info(f"payload: {payload}")
 
     # バリデータを作成
-    validator = Validator(SCHEMA)
+    validator = Validator(SCHEMA, allow_unknown=True)
 
     # バリデーションがうまく通らない場合エラーを吐く
     # 不明なパラメータの入力も`allow_unknown`で許可している
-    if not validator.validate(payload, allow_unknown=True):
+    if not validator.validate(payload):
         return func.HttpResponse(
             body=json.dumps(validator.errors),
             mimetype="application/json",
