@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "{project_name}"
+name = "tech_shared_code"
 version = "0.1.0"
 description = ""
-authors = ["{your_name} <{your_email}>"]
+authors = ["gsy0911 <yoshiki0911@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -11,9 +11,6 @@ azure-identity = "^1.5.0"
 
 [tool.poetry.dev-dependencies]
 jupyterlab = "^2.1.1"
-pytest = "^5.4.1"
-pytest-cov = "^2.8.1"
-pytest-mock = "^3.1.0"
 sphinx = "^3.1.1"
 
 [build-system]
